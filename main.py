@@ -8,10 +8,9 @@ from os import getenv  # ← necesario para Railway
 app = Flask(__name__)
 CORS(app)
 
-# Ruta al archivo donde se almacenarán los datos GPS
 GPS_FILE = "data.json"
 
-# Si no existe, crear archivo con lista vacía
+# Crear archivo vacío si no existe
 if not os.path.exists(GPS_FILE):
     with open(GPS_FILE, "w") as f:
         json.dump([], f)
@@ -29,7 +28,6 @@ def recibir_datos():
             "lon": data.get("long", [0])[0]
         }
 
-        # Leer y actualizar archivo
         with open(GPS_FILE, "r+") as f:
             contenido = json.load(f)
             contenido.append(nuevo_dato)
@@ -37,9 +35,18 @@ def recibir_datos():
             json.dump(contenido, f, indent=2)
 
         return jsonify({"status": "ok"}), 200
-
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
+@app.route("/api/clear", methods=["POST"])
+def borrar_datos():
+    try:
+        with open(GPS_FILE, "w") as f:
+            json.dump([], f)
+        print("🗑️ Datos GPS eliminados.")
+        return jsonify({"status": "datos eliminados"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route("/data.json")
 def obtener_datos():
@@ -49,6 +56,6 @@ def obtener_datos():
 def index():
     return send_from_directory('.', "mapa.html")
 
-# 🔥 IMPORTANTE: esto permite a Railway usar el puerto correcto
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(getenv("PORT", 5000)))
+
