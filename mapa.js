@@ -1,4 +1,3 @@
-
 function cargarMapa() {
   fetch("/data.json")
     .then(res => res.json())
@@ -15,10 +14,22 @@ function cargarMapa() {
 
       const ruta = gpsData.map(p => [p.lat, p.lon]);
       L.polyline(ruta, { color: 'blue' }).addTo(map);
+
       ruta.forEach((p, i) => {
         const info = gpsData[i];
-        L.marker(p).addTo(map).bindPopup(`📍 ${info.timestamp}`);
+
+        if (i === ruta.length - 1) {
+          const marker = L.marker(p).addTo(map);
+          marker.bindPopup(`
+            <b>📍 Última posición:</b><br>
+            ${info.timestamp}<br>
+            <img src="https://servidor-gps.up.railway.app/ultima.jpg?ts=${Date.now()}" width="200">
+          `).openPopup();
+        } else {
+          L.marker(p).addTo(map).bindPopup(`📍 ${info.timestamp}`);
+        }
       });
+
       map.fitBounds(ruta);
     });
 }
@@ -38,4 +49,10 @@ function borrarPuntos() {
   }
 }
 
-cargarMapa();
+cargarMapa(); 
+setInterval(() => {
+  const img = document.getElementById("cam-image");
+  if (img) {
+    img.src = "https://servidor-gps.up.railway.app/ultima.jpg?ts=" + Date.now();
+  }
+}, 5000);
