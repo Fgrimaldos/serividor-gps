@@ -3,6 +3,7 @@ from flask_cors import CORS
 import json
 import os
 from datetime import datetime
+from os import getenv  # ← necesario para Railway
 
 app = Flask(__name__)
 CORS(app)
@@ -48,5 +49,6 @@ def obtener_datos():
 def index():
     return send_from_directory('.', "mapa.html")
 
+# 🔥 IMPORTANTE: esto permite a Railway usar el puerto correcto
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=int(getenv("PORT", 5000)))
