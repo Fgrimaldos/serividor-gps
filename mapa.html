@@ -4,52 +4,22 @@
   <meta charset="utf-8">
   <title>Mapa GPS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="estilos.css"> <!-- Si ya tienes un CSS personalizado -->
+
 </head>
 <body>
 
-  <button onclick="borrarPuntos()">Borrar puntos GPS</button>
-  <div id="map"></div>
+  <div style="text-align: center; margin-top: 10px;">
+    <button onclick="borrarPuntos()">🗑️ Borrar puntos GPS</button>
+  </div>
+
+  <div id="map" style="height: 80vh; margin: 10px;"></div>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    fetch("/data.json")
-      .then(res => res.json())
-      .then(gpsData => {
-        if (!gpsData.length) {
-          alert("No hay datos GPS");
-          return;
-        }
-
-        const map = L.map('map').setView([gpsData[0].lat, gpsData[0].lon], 14);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
-
-        const ruta = gpsData.map(p => [p.lat, p.lon]);
-        L.polyline(ruta, { color: 'blue' }).addTo(map);
-
-        ruta.forEach((p, i) => {
-          const info = gpsData[i];
-          L.marker(p).addTo(map).bindPopup(`📍 ${info.timestamp}`);
-        });
-
-        map.fitBounds(ruta);
-      });
-
-    function borrarPuntos() {
-      if (confirm("¿Seguro que deseas borrar todos los puntos GPS?")) {
-        fetch("/api/clear", { method: "POST" })
-          .then(res => res.json())
-          .then(data => {
-            alert("Puntos eliminados.");
-            location.reload();
-          })
-          .catch(err => {
-            alert("Error al borrar: " + err);
-          });
-      }
-    }
-  </script>
-
+  <script src="mapa.js"></script> <!-- Script JS externo -->
 </body>
 </html>
+
 
