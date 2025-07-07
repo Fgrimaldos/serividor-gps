@@ -53,17 +53,28 @@ def obtener_datos():
     return send_from_directory(".", GPS_FILE)
 
 @app.route("/")
-def index():
+def presentacion():
+    return send_from_directory(".", "Presentacion.html")
+
+@app.route("/mapa")
+def mapa():
     return send_from_directory(".", "mapa.html")
 
 @app.route("/estilos.css")
-def estilos():
+def estilos_mapa():
     return send_from_directory(".", "estilos.css")
 
 @app.route("/mapa.js")
-def script():
+def script_mapa():
     return send_from_directory(".", "mapa.js")
 
+@app.route("/estilop.css")
+def estilos_presentacion():
+    return send_from_directory(".", "estiloP.css")
+
+@app.route("/script.js")
+def script_presentacion():
+    return send_from_directory(".", "Script.js")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(getenv("PORT", 5000)))
