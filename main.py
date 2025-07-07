@@ -3,14 +3,14 @@ from flask_cors import CORS
 import json
 import os
 from datetime import datetime
-from os import getenv  # Necesario para Railway
+from os import getenv  
 
 app = Flask(__name__)
 CORS(app)
 
 GPS_FILE = "data.json"
 
-# Crear archivo si no existe
+
 if not os.path.exists(GPS_FILE):
     with open(GPS_FILE, "w") as f:
         json.dump([], f)
@@ -52,32 +52,34 @@ def borrar_puntos():
 def obtener_datos():
     return send_from_directory(".", GPS_FILE)
 
+# Rutas para archivos estáticos
 @app.route("/estilos.css")
-def estilos_mapa():
+def estilo_mapa():
     return send_from_directory(".", "estilos.css")
 
 @app.route("/estilop.css")
-def estilos_presentacion():
+def estilo_presentacion():
     return send_from_directory(".", "estilop.css")
 
-@app.route("/script.js")
-def script_presentacion():
-    return send_from_directory(".", "script.js")
-
 @app.route("/mapa.js")
-def script_mapa():
+def mapa_js():
     return send_from_directory(".", "mapa.js")
 
+@app.route("/script.js")
+def script_js():
+    return send_from_directory(".", "script.js")
+
+# Páginas
 @app.route("/")
-def inicio():
-    return send_from_directory(".", "presentacion.html")
+def presentacion():
+    return send_from_directory('.', "presentacion.html")
 
 @app.route("/mapa")
 def ver_mapa():
-    return send_from_directory(".", "mapa.html")
+    return send_from_directory('.', "mapa.html")
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(getenv("PORT", 5000)))
-
 
 
