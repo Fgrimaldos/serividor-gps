@@ -37,6 +37,15 @@ def recibir_datos():
         return jsonify({"status": "ok"}), 200
 
     except Exception as e:
+        return jsonify({"error": str(e)}), 400 
+
+@app.route("/borrar", methods=["DELETE"])
+def borrar_puntos():
+    try:
+        with open(GPS_FILE, "w") as f:
+            json.dump([], f)
+        return jsonify({"status": "ok"}), 200
+    except Exception as e:
         return jsonify({"error": str(e)}), 400
 
 @app.route("/data.json")
