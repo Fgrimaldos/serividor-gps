@@ -53,30 +53,18 @@ def obtener_datos():
     return send_from_directory(".", GPS_FILE)
 
 @app.route("/")
-def presentacion():
-    return send_from_directory(".", "presentacion.html")
-
-@app.route("/mapa")
-def mapa():
+def index():
     return send_from_directory(".", "mapa.html")
 
-@app.route("/estilop.css")
-def estilo_presentacion():
-    return send_from_directory(".", "estilop.css")
-@app.route("/script.js")
-def js_presentacion():
-    return send_from_directory(".", "script.js")
-
 @app.route("/estilos.css")
-def estilo_mapa():
+def estilos():
     return send_from_directory(".", "estilos.css")
 
 @app.route("/mapa.js")
-def js_mapa():
+def script():
     return send_from_directory(".", "mapa.js")
-    
-# Railway necesita el puerto correcto
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(getenv("PORT", 5000)))
-
 
