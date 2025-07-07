@@ -52,17 +52,22 @@ def borrar_puntos():
 def obtener_datos():
     return send_from_directory(".", GPS_FILE)
 
-@app.route("/")
-def index():
-    return send_from_directory(".", "mapa.html")
-
 @app.route("/estilos.css")
 def estilos():
-    return send_from_directory(".", "estilos.css")
+    return send_from_directory(".", "estilos.css") 
 
-@app.route("/mapa.js")
-def script():
-    return send_from_directory(".", "mapa.js")
+@app.route("/")
+def inicio():
+    return send_from_directory('.', "inicio.html")
+
+@app.route("/mapa")
+def ver_mapa():
+    return send_from_directory('.', "mapa.html") 
+
+@app.route("/estilop.css")
+def estilos():
+    return send_from_directory(".", "estilos.css") 
+
 
 
 if __name__ == "__main__":
