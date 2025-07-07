@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    margin: 0;
+    padding: 0;
+    line-height: 1.8;
+    font-size: 18px; 
+}
+
+header {
+    background-color: black;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 26px;
+}
+
+
+.intro { background-color: beige }
+.descripcion { background-color: grey; }
+.objetivos { background-color: lightgoldenrodyellow; }
+.diseno { background-color: darkgrey; }
+
+.seccion {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.seccion.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contenido {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+    gap: 40px;
+}
+
+.fila-normal {
+    flex-direction: row;
+}
+.fila-reversa {
+    flex-direction: row-reverse;
+}
+
+.texto {
+    flex: 1 1 500px;
+    font-size: 20px;
+}
+
+.imagen {
+    flex: 1 1 400px;
+    display: flex;
+    justify-content: center;
+}
+.imagen img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+}
+
+ul {
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.boton-container {
+    text-align: center;
+    margin: 40px 0 60px 0;
+}
+.boton-probar {
+    display: inline-block;
+    padding: 14px 28px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+.boton-probar:hover {
+    background-color: black;
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+}

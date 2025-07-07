@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación ESP32 CAM Rover</title>
+    <link rel="stylesheet" href="estiloP.css">
+</head>
+<body>
+
+<header>
+    <h1>ESP32-CAM Rover</h1>
+</header>
+
+<section class="intro seccion">
+    <div class="contenido fila-normal">
+        <div class="texto">
+            <h2>Introducción</h2>
+            <p>
+                La imprevisibilidad de las cosas es algo con lo que estamos destinados a vivir hasta cierto punto, 
+                algo a asumir pero no a sufrir. La localización en diversos ambientes es algo altamente dependiente 
+                de razones externas, desde otras personas hasta infraestructura gigantesca. 
+            </p>
+            <p>
+                Con este pequeño rastreador se busca apoyar las funciones de localización y monitoreo en entornos locales,
+                además dando opciones desde una completa visión con una cámara, hasta algo tan primordial como coordenadas de GPS.
+            </p>
+        </div>
+        <div class="imagen">
+            <img src="introcarro.jpeg" alt="Imagen del ESP32-CAM" />
+        </div>
+    </div>
+</section>
+
+<section class="descripcion seccion">
+    <div class="contenido fila-reversa">
+        <div class="texto">
+            <h2>Descripción</h2>
+            <p>
+                Este proyecto desarrolla un sistema de rastreo y monitoreo móvil basado en un vehículo robótico autónomo, controlado por un microcontrolador ESP32. Integra un módulo GPS Neo-6M para obtener coordenadas geográficas en tiempo real y una cámara ESP32-CAM para transmitir video del entorno.
+            </p>
+            <p>
+                El sistema se programa en C++ mediante Arduino IDE, y envía los datos al computador por puerto serial. Allí, un script en Python grafica las rutas en tiempo real usando matplotlib. El movimiento del vehículo se gestiona mediante un puente H (L298N), permitiendo control local sin depender de servicios en la nube.
+            </p>
+            <p>
+                Esta solución tiene aplicaciones en vigilancia, seguimiento, exploración y enseñanza de sistemas embebidos, combinando geolocalización, visión artificial y control de movilidad en un entorno práctico y educativo.
+            </p>
+        </div>
+        <div class="imagen">
+            <img src="imagendurisimaingeniero.jpeg" alt="Esquema del proyecto" />
+        </div>
+    </div>
+</section>
+
+<section class="objetivos seccion">
+    <div class="contenido fila-normal">
+        <div class="texto">
+            <h2>Objetivos</h2>
+                    <ul>
+            <li>Aplicar conocimientos de programación en C++ y Python en un contexto práctico.</li>
+            <li>Desarrollar un sistema de adquisición y visualización de coordenadas GPS eficiente y confiable.</li>
+            <li>Integrar múltiples herramientas y entornos de programación como Arduino IDE y Thonny.</li>
+            <li>Evaluar la eficiencia del producto en condiciones reales de uso.</li>
+            <li>Fortalecer habilidades en diseño de prototipos electrónicos e interpretación de datos geográficos.</li>
+        </ul>
+
+        </div>
+        <div class="imagen">
+            <img src="objetivomapa.jpeg" alt="Icono de objetivos" />
+        </div>
+    </div>
+</section>
+
+<section class="diseno seccion">
+    <div class="contenido fila-reversa">
+        <div class="texto">
+            <h2>Diseño</h2>
+            <p>
+                Este carro robótico fue diseñado sobre la plataforma ESP32, aprovechando su capacidad de procesamiento y conectividad. Se integraron módulos compatibles como la cámara ESP32-CAM para visión en tiempo real y el GPS Neo-6M para geolocalización precisa. 
+            </p>
+            <p>
+                El diseño prioriza la modularidad, permitiendo conectar sensores y actuadores de forma sencilla. La estructura del vehículo se apoya en un chasis motorizado controlado por un puente H, lo que facilita su desplazamiento autónomo y su adaptación a diversos entornos.
+            </p>
+        </div>
+        <div class="imagen">
+            <img src="esquema.jpeg" alt="Diseño técnico" />
+        </div>
+    </div>
+</section>
+
+<div class="boton-container">
+    <a href="Html.html" class="boton-probar">Probarlo</a>
+</div>
+
+<footer>
+    &copy; 2025 Proyecto ESP32-CAM GPS | Autor: David Wilches
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
+
+
