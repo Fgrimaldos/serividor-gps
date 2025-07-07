@@ -25,7 +25,7 @@ function cargarMapa() {
 
 function borrarPuntos() {
   if (confirm("¿Estas seguro de que quieres borrar todos los puntos GPS?")) {
-    fetch("/api/clear", { method: "POST" })
+    fetch("/borrar", { method: "DELETE" })
       .then(res => res.json())
       .then(res => {
         alert("Puntos eliminados");
